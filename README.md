@@ -33,3 +33,13 @@ export default {
   removeUrlWhitelist: ['keywords'],
 };
 ```
+
+> 以下配置不推荐使用
+
+还有一些奇怪的字符串会被识别成不安全。你可以通过配置 removeSomeThing 来移除他们
+比如说 elliptic@6.5.4 是一个邮箱的，这种奇怪的结论。
+```
+export default {
+  removeSomeThing: ['elliptic@6.5.4'],
+};
+```

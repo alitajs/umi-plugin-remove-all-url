@@ -4,6 +4,7 @@ class RemoveURLPlugin {
   constructor(options) {
     const defaulOptions = {
       whitelist: [],
+      removeSomeThing: []
     };
     this.options = Object.assign(defaulOptions, options);
   }
@@ -26,8 +27,11 @@ class RemoveURLPlugin {
             }
           }
           regArr.forEach(x => {
-            content = content.replace(x, 'alitaremoveallurl');
-          })
+            content = content.replace(new RegExp(x, "gm"), 'alitaremoveallurl');
+          });
+          options.removeSomeThing.forEach(y => {
+            content = content.replace(new RegExp(y, "gm"), 'alitaremovesomething');
+          });
           compilation.assets[i] = {
             source: () => content,
             size: () => content.length
